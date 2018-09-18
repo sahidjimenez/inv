@@ -126,7 +126,7 @@
 
         <!-- Page Content -->
         <div id="page-wrapper">
-            <div class="container-fluid">
+            
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">Prestar articulo</h1>
@@ -134,6 +134,63 @@
                     <!-- /.col-lg-12 -->
                 </div>
                 <!-- /.row -->
+            <div class="panel panel-default">
+                <div class="panel panel-body">
+                    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?> " method="POST" clase="" name="login">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="Empleado" name="nombre" type="nombre" autofocus>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="Articulo" name="articulo" type="articulo" autofocus>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">                 
+                                <div class="col-lg-2">
+                                    <div class="form-group">
+                                        <input type="number" min="0" class="form-control" placeholder="cantidad" name="cantidad"  type="cantidad" autofocus>
+                                    </div>
+                                </div>
+                            </div>   
+                        </div>
+                        
+                         <div class="row">
+                            <div class="col-lg-12">
+                                <div class="col-lg-2">
+                                    <div class="form-group">
+                                        <a class="btn btn-lg btn-success btn-block" onclick="login.submit();">Agregar</a>
+                                    </div>
+                                </div>
+                            </div>   
+                        </div>  
+                    </form>
+                </div>
+
+                <div class="panel panel-footer">
+                    <?php if(!empty($errores)):?>
+                        <div class="alert alert-danger">
+                            <ul>
+                                <?php echo $errores;?>
+                            </ul>
+                         </div>
+                     <?php endif; ?>
+                    <?php if(!empty($agregado)):?>
+                        <div class="alert alert-success">
+                            <ul>
+                                <?php echo $agregado;?>
+                            </ul>
+                         </div>
+                     <?php endif; ?>
+                </div>
+            
+                
             </div>
             <!-- /.container-fluid -->
         </div>
