@@ -160,20 +160,39 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                      foreach($resultado as $mostrar){  
+                                        foreach($resultado as $mostrar){  
                                     ?>
-                                    <tr class="gradeA">
-                                        <td><?php echo $mostrar['idarticulos']?></td>
-                                        <td><?php echo $mostrar['nombre']?></td>
-                                        <td><?php echo $mostrar['descripcion']?></td>
-                                        <td><?php echo $mostrar['descripcion1']?></td>
-                                        <td><?php echo $mostrar['cantidad']?></td>
-                                        <td><?php echo $mostrar['estado_idestado']?></td>
-                                        <td><?php echo $mostrar['ocupado_idocupado']?></td>
-                                    </tr>
-                                    
+                                        <tr class="gradeA">
+                                            <td><?php echo $mostrar['idarticulos']?></td>
+                                            <td><?php echo $mostrar['nombre']?></td>
+                                            <td><?php echo $mostrar['descripcion']?></td>
+                                            <td><?php echo $mostrar['descripcion1']?></td>
+                                            <td><?php echo $mostrar['cantidad']?></td>
+                                            <td>
+                                                <?php 
+                                                    if ($mostrar['estado_idestado']==1) {
+                                                        echo "Nuevo";
+                                                    }
+                                                    if ($mostrar['estado_idestado']==2) {
+                                                        echo "Semi nuevo";
+                                                    }
+                                                    if ($mostrar['estado_idestado']==3) {
+                                                        echo "Viejo";
+                                                    }
+                                                ?> 
+                                            </td>
+                                            <td>
+                                                <?php 
+                                                    if ($mostrar['ocupado_idocupado']==1) {
+                                                        echo "No";
+                                                    }else{
+                                                        echo "Si";
+                                                    } 
+                                                ?>
+                                            </td>
+                                        </tr>
                                     <?php
-                                    }
+                                        }
                                     ?>
                                 </tbody>
 

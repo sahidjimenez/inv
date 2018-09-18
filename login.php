@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD']== 'POST') {
 
 
 	try{
-			$conexion = new PDO('mysql:host=localhost;dbname=generador','root','');
+			$conexion = new PDO('mysql:host=localhost;dbname=inventario','root','');
 	}catch  (PDOException $e){
 			echo "Error: ". $e->getMessage();			
 	}
@@ -40,6 +40,8 @@ if ($_SERVER['REQUEST_METHOD']== 'POST') {
 		$errores .='<li>Datos Incorrectos </li>';
 
 	}
+
+	
 	
 }
 
