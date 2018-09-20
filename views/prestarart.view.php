@@ -30,6 +30,7 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+
 </head>
 <body>
 
@@ -141,12 +142,22 @@
                             <div class="col-lg-12">
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="Empleado" name="nombre" type="nombre" autofocus>
+                                        <input class="form-control" placeholder="persona" name="persona" type="persona" list="listapersonas" autofocus>
+                                        <datalist id=listapersonas> 
+                                            <?php foreach ($resultado_personas as $mostrar_personas){ ?> 
+                                                <option><?php echo $mostrar_personas['nombre'] ?></option>
+                                            <?php } ?>
+                                        </datalist>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="Articulo" name="articulo" type="articulo" autofocus>
+                                        <input class="form-control" placeholder="Articulo" name="articulo" type="articulo" list="listaarticulos" autofocus>
+                                        <datalist id=listaarticulos> 
+                                            <?php foreach ($resultado_articulos as $mostrar_articulos){ ?> 
+                                                <option><?php echo $mostrar_articulos['nombre'] ?></option>
+                                            <?php } ?>
+                                        </datalist>
                                     </div>
                                 </div>
                             </div>
@@ -155,7 +166,9 @@
                             <div class="col-lg-12">                 
                                 <div class="col-lg-2">
                                     <div class="form-group">
-                                        <input type="number" min="0" class="form-control" placeholder="cantidad" name="cantidad"  type="cantidad" autofocus>
+                                        <input type="number" min="0" class="form-control" placeholder="Cantidad" name="cantidad"  type="cantidad" autofocus>
+
+                                        
                                     </div>
                                 </div>
                             </div>   

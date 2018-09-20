@@ -1,33 +1,36 @@
 <?php session_start();
 
+
 if (isset($_SESSION['usuario'])) {
 	
 }else{
 	header('Location: inicio.php');
 }
 
-	$usuario=$_SESSION['usuario'];
-		try{
-			$conexion = new PDO('mysql:host=localhost;dbname=inventario','root','');
-		}catch  (PDOException $e){
-			echo "Error: ". $e->getMessage();			
-		}
 
-		$statement = $conexion->prepare('SELECT	* FROM usuarios WHERE nombre =:usuario');
-		$statement->execute(array(':usuario'=>$usuario));
-		$resultado = $statement->fetch();
+$usuario=$_SESSION['usuario'];
+		
+	try{
+		$conexion = new PDO('mysql:host=localhost;dbname=inventario','root','');
+	}catch  (PDOException $e){
+		echo "Error: ". $e->getMessage();			
+	}
 
-		$idusuario = $resultado['idusuarios'];
+	$statement = $conexion->prepare('SELECT	* FROM usuarios WHERE nombre =:usuario');
+	$statement->execute(array(':usuario'=>$usuario));
+	$resultado = $statement->fetch();
 
-		try{
-			$conexion = new PDO('mysql:host=localhost;dbname=inventario','root','');
-		}catch  (PDOException $e){
-			echo "Error: ". $e->getMessage();			
-		}
+$idusuario = $resultado['idusuarios'];
 
-		$statement = $conexion->prepare('SELECT	* FROM articulos WHERE usuarios_idusuarios =:idusuario');
-		$statement->execute(array(':idusuario'=>$idusuario));
-		$resultado = $statement->fetchAll();
+	try{
+		$conexion = new PDO('mysql:host=localhost;dbname=inventario','root','');
+	}catch  (PDOException $e){
+		echo "Error: ". $e->getMessage();			
+	}
+
+	$statement = $conexion->prepare('SELECT	* FROM articulos WHERE usuarios_idusuarios =:idusuario');
+	$statement->execute(array(':idusuario'=>$idusuario));
+	$resultado = $statement->fetchAll();
 
 		//print_r($resultado);
 		

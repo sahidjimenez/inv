@@ -52,20 +52,6 @@ if ($_SERVER['REQUEST_METHOD'] =='POST' ) {
 
 		if ($errores =='') {
 
-		/*	echo $nombre;
-			echo "<br>";
-			echo $descripcion;
-			echo "<br>";
-			echo $descripcion2;
-			echo "<br>";
-			echo $cantidad;
-			echo "<br>";
-			echo $estado;
-			echo "<br>";
-			echo $ocupado;
-			echo "<br>";
-			echo $idusuario;
-		*/
 			
 		$statement = $conexion->prepare('INSERT INTO articulos 
 			(idarticulos,nombre,descripcion,descripcion1,cantidad,estado_idestado,ocupado_idocupado,usuarios_idusuarios) 
@@ -84,6 +70,8 @@ if ($_SERVER['REQUEST_METHOD'] =='POST' ) {
 
 			$agregado .='<li> El Articulo se a agregado</li>';
 			//header('Location: game.php');
+
+		
 		}
 
 	}

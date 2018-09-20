@@ -174,7 +174,7 @@
                                                         echo "Nuevo";
                                                     }
                                                     if ($mostrar['estado_idestado']==2) {
-                                                        echo "Semi nuevo";
+                                                        echo "Seminuevo";
                                                     }
                                                     if ($mostrar['estado_idestado']==3) {
                                                         echo "Viejo";

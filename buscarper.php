@@ -1,11 +1,11 @@
 <?php session_start();
-
+/*
 if (isset($_SESSION['usuario'])) {
 	
 }else{
 	header('Location: inicio.php');
 }
-
+*/
 	$usuario=$_SESSION['usuario'];
 		try{
 			$conexion = new PDO('mysql:host=localhost;dbname=inventario','root','');
