@@ -121,7 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] =='POST' ) {
 				':idarticulo'=>$idarticulo
 			));
 			$resultado = $statement->fetch();
-
+			header('Location: prestarart.php');
 		}
 	}
 }
