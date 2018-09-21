@@ -114,7 +114,7 @@
                             <a href="./prestarart.php"><i class="fa  fa-arrow-right fa-fw"></i>Prestar articulo</a>
                         </li>
                         <li>
-                            <a href="./prestarart.php"><i class="fa  fa-arrow-left fa-fw"></i>Devolver articulo</a>
+                            <a href="./devolverart.php"><i class="fa  fa-arrow-left fa-fw"></i>Devolver articulo</a>
                         </li>
                     </ul>
                 </div>

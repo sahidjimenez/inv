@@ -122,7 +122,7 @@
                             <a href="./prestarart.php"><i class="fa  fa-arrow-right fa-fw"></i>Prestar articulo</a>
                         </li>
                         <li>
-                            <a href="./prestarart.php"><i class="fa  fa-arrow-left fa-fw"></i>Devolver articulo</a>
+                            <a href="./devolverart.php"><i class="fa  fa-arrow-left fa-fw"></i>Devolver articulo</a>
                         </li>
                     </ul>
                 </div>
@@ -156,6 +156,7 @@
                                         <th>Cantidad</th>
                                         <th>Estado</th>
                                         <th>Ocupado</th>
+                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -189,6 +190,21 @@
                                                         echo "Si";
                                                     } 
                                                 ?>
+                                            </td>
+                                            <td>
+                                                <form  class="form-class" method="post" action="./modificarart.php">                   
+                                                    
+                                                    <input type="hidden" name="modificar" value="<?php echo $mostrar['idarticulos']?>">
+                                                    <input type="submit" class="btn btn-info btn-xs" value="Modificar" >
+                                                    
+                                                </form>
+                                                
+                                                <form  class="form-class" method="post" action="./eliminarart.php">
+                                                                                                      
+                                                    <input type="hidden" name="modificar" value="<?php echo $mostrar['idarticulos']?>">
+                                                    <input type="submit" class="btn btn-danger btn-xs" value="Eliminar" >
+                                                    
+                                                </form>
                                             </td>
                                         </tr>
                                     <?php

@@ -115,7 +115,7 @@
                             <a href="./prestarart.php"><i class="fa  fa-arrow-right fa-fw"></i>Prestar articulo</a>
                         </li>
                         <li>
-                            <a href="./prestarart.php"><i class="fa  fa-arrow-left fa-fw"></i>Devolver articulo</a>
+                            <a href="./devolverart.php"><i class="fa  fa-arrow-left fa-fw"></i>Devolver articulo</a>
                         </li>
                     </ul>
                 </div>
@@ -133,6 +133,53 @@
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
+                <div class="panel panel-default">
+                    <div class="panel panel-body">
+                        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?> " method="POST" clase="" name="login">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <input class="form-control" placeholder="Nombre" name="nombre" type="nombre" autofocus>
+                                        </div>
+                                    </div>
+
+     
+                                </div>
+                            </div>
+                     
+     
+                             <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="col-lg-2">
+                                        <div class="form-group">
+                                            <a class="btn btn-lg btn-success btn-block" onclick="login.submit();">Agregar</a>
+                                        </div>
+                                    </div>
+                                </div>   
+                            </div>  
+                        </form>
+                    </div>
+
+                    <div class="panel panel-footer">
+                        <?php if(!empty($errores)):?>
+                            <div class="alert alert-danger">
+                                <ul>
+                                    <?php echo $errores;?>
+                                </ul>
+                             </div>
+                         <?php endif; ?>
+                        <?php if(!empty($agregado)):?>
+                            <div class="alert alert-success">
+                                <ul>
+                                    <?php echo $agregado;?>
+                                </ul>
+                             </div>
+                         <?php endif; ?>
+                    </div>
+            
+                
+            </div>
                 <!-- /.row -->
             </div>
             <!-- /.container-fluid -->
