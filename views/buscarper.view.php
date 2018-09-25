@@ -159,9 +159,9 @@
                                         foreach($resultado as $mostrar){  
                                     ?>
                                         <tr class="gradeA">
-                                            <td><?php echo $mostrar['idpersonas']?></td>
-                                            <td><?php echo $mostrar['nombre']?></td>
-                                            <td><?php echo "Aqui debe salir si tiene articulos prestados o no"?></td>
+                                            <td><?php echo $mostrar[0]?></td>
+                                            <td><?php echo $mostrar[1]?></td>
+                                            <td><?php if(!empty($mostrar[8]) ) { echo 'El articulo : '. $mostrar[8].'<br>'.' Cantidad de : '.$mostrar[4]; }?></td>
                                         </tr>
                                     <?php
                                         }

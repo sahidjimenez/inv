@@ -25,7 +25,7 @@ if (isset($_SESSION['usuario'])) {
 			echo "Error: ". $e->getMessage();			
 		}
 
-		$statement = $conexion->prepare('SELECT	* FROM personas WHERE usuarios_idusuarios =:idusuario');
+		$statement = $conexion->prepare('SELECT * FROM personas left JOIN prestamo ON personas.idpersonas = prestamo.personas_idpersonas left JOIN articulos ON prestamo.articulos_idarticulos = articulos.idarticulos WHERE personas.usuarios_idusuarios =:idusuario');
 		$statement->execute(array(':idusuario'=>$idusuario));
 		$resultado = $statement->fetchAll();
 
