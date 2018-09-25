@@ -50,11 +50,11 @@ if ($_SERVER['REQUEST_METHOD'] =='POST' ) {
 	$idpersona=$resultado['idpersonas'];
 
 	if ($resultado != true) {
-		$errores.='la persona no existe';
+		$errores.='La persona no tiene ningun prestamo';
 	}else{
 		
 		
-		$statement = $conexion->prepare('SELECT personas.nombre, articulos.nombre, prestamo.cantidad FROM prestamo INNER JOIN articulos ON prestamo.articulos_idarticulos = articulos.idarticulos INNER JOIN personas ON prestamo.personas_idpersonas = personas.idpersonas WHERE personas.nombre = :nombre AND articulos.usuarios_idusuarios = :idusuario');
+		$statement = $conexion->prepare('SELECT personas.nombre, articulos.nombre, prestamo.cantidad,articulos.idarticulos,prestamo.idprestamo FROM prestamo INNER JOIN articulos ON prestamo.articulos_idarticulos = articulos.idarticulos INNER JOIN personas ON prestamo.personas_idpersonas = personas.idpersonas WHERE personas.nombre = :nombre AND articulos.usuarios_idusuarios = :idusuario');
 		
 		$statement ->execute(array(
 			':nombre'=>$nombre,
@@ -62,11 +62,11 @@ if ($_SERVER['REQUEST_METHOD'] =='POST' ) {
 		));
 
 		$resultadoN = $statement->fetch();
-
-		$nombreA = $resultadoN[1];
 		$nombreP = $resultadoN[0];
-
+		$nombreA = $resultadoN[1];
 		$cantidad = $resultadoN[2];
+		$idarticulo = $resultadoN[3];
+		$idprestamo = $resultadoN[4];
 
 		
 

@@ -162,7 +162,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <?php if (!empty($resultadoN)):?>
-                                                
+
                                                 <div class="panel panel-primary">
                                                     <div class="panel-heading">
                                                         <?php echo $nombreP ?>
@@ -176,6 +176,11 @@
                                                             tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
                                                         </p>
                                                         <form method="POST" action="./devolver.php">
+                                                            <input type="hidden" name="nombreP" value="<?php echo $nombreP; ?>">
+                                                            <input type="hidden" name="nombreA" value="<?php echo $nombreA; ?>">
+                                                            <input type="hidden" name="cantidad" value="<?php echo $cantidad;?>">
+                                                            <input type="hidden" name="id" value="<?php echo $idarticulo;?>">
+                                                            <input type="hidden" name="idprestamo" value="<?php echo $idprestamo;?>">
                                                             <input type="submit" class="btn btn-primary " value="Devolver" >
                                                         </form>
 
