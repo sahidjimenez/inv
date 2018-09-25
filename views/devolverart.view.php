@@ -140,11 +140,9 @@
                                 <div class="col-lg-12">
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <input class="form-control" placeholder="Nombre" name="nombre" type="nombre" autofocus>
+                                            <input class="form-control" placeholder="Nombre del personal" name="nombre" type="nombre" autofocus>
                                         </div>
                                     </div>
-
-     
                                 </div>
                             </div>
                      
@@ -159,6 +157,39 @@
                                 </div>   
                             </div>  
                         </form>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <?php if (!empty($resultadoN)):?>
+                                                
+                                                <div class="panel panel-primary">
+                                                    <div class="panel-heading">
+                                                        <?php echo $nombreP ?>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <?php echo " El articulo prestado es : ".$nombreA; ?>
+                                                        <br>
+                                                        <?php echo " Cantidad : ".$cantidad; ?>
+                                                        <p>
+                                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                                                        </p>
+                                                        <form method="POST" action="./devolver.php">
+                                                            <input type="submit" class="btn btn-primary " value="Devolver" >
+                                                        </form>
+
+                                                    </div>
+                                                    <div class="panel-footer">
+                                                        
+                                                    </div>
+                                                </div>
+
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+                                </div>   
+                            </div>
                     </div>
 
                     <div class="panel panel-footer">

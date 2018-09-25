@@ -24,7 +24,7 @@ $usuario=$_SESSION['usuario'];
 	$statement->execute(array(':usuario'=>$usuario));
 	$resultado = $statement->fetch();
 
-$idusuario = $resultado['idusuarios'];
+	$idusuario = $resultado['idusuarios'];
 
 	try{
 		$conexion = new PDO('mysql:host=localhost;dbname=inventario','root','');
