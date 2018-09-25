@@ -194,7 +194,11 @@
                                             <td>
                                                 <form  class="form-class" method="post" action="./modificarart.php">                   
                                                     
-                                                    <input type="hidden" name="modificar" value="<?php echo $mostrar['idarticulos']?>">
+                                                    <input type="hidden" name="idarticulo" value="<?php echo $mostrar['idarticulos']?>">
+                                                    <input type="hidden" name="nombre" value="<?php echo $mostrar['nombre']?>">
+                                                    <input type="hidden" name="descripcion" value="<?php echo $mostrar['descripcion']?>">
+                                                    <input type="hidden" name="descripcion1" value="<?php echo $mostrar['descripcion1']?>">
+                                                     <input type="hidden" name="cantidad" value="<?php echo $mostrar['cantidad']?>">
                                                     <input type="submit" class="btn btn-info btn-xs" value="Modificar" >
                                                     
                                                 </form>
