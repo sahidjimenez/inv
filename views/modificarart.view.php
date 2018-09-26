@@ -55,7 +55,7 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
-                    <ul class="dropdown-menu dropdown-user">
+                    <ul class="dropdown-menu ">
                         <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
                         </li>
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
@@ -135,7 +135,7 @@
                 <!-- /.row -->
             <div class="panel panel-default">
                 <div class="panel panel-body">
-                    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?> " method="POST" clase="" name="login">
+                    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?> " method="POST" clase="" name="loginn">
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="col-lg-4">
@@ -170,10 +170,25 @@
                             <div class="col-lg-12">              
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <select  class="form-control"  name="estado" id="select">
-                                            <option value="1">Nuevo</option>
-                                            <option value="2">Seminuevo</option>
-                                            <option value="3">Viejo</option>
+                                        <select  class="form-control" selected="<?php echo $estado; ?>" placeholder="" name="estado" id="select">
+
+
+                                            <?php if( $estado==1): ?>
+                                                <option value="1" selected>Nuevo</option>
+                                                <option value="2">Seminuevo</option>
+                                                <option value="3">Viejo</option>
+                                            <?php endif; ?>
+                                            <?php if( $estado==2): ?>
+                                                <option value="1">Nuevo</option>
+                                                <option value="2" selected>Seminuevo</option>
+                                                <option value="3">Viejo</option>
+                                            <?php endif; ?>
+                                            <?php if( $estado==3): ?>
+                                                <option value="1">Nuevo</option>
+                                                <option value="2">Seminuevo</option>
+                                                <option value="3" selected>Viejo</option>
+                                            <?php endif; ?>
+
                                         </select>
                                     </div>
                                 </div>

@@ -43,7 +43,7 @@
                     </div>
                     <div class="panel-body">
                         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?> " method="POST" clase="" name="login">
-                            <fieldset>                            <div class="form-group">
+                            <fieldset>                           
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Nombre de usuario" name="usuario" type="usuario" autofocus>
                                 </div>
@@ -56,8 +56,11 @@
                                     </label>
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
-                                <a class="btn btn-lg btn-success btn-block" onclick="login.submit();">Login</a>
+                                <a class="btn btn-lg btn-primary btn-block" onclick="login.submit();">Login</a>
                             </fieldset>
+                        </form>
+                        <form method="POST">
+                            <a href="crearcuenta.php" class="btn btn-lg btn-link " ">Crear cuenta</a>
                         </form>
                         <?php if(!empty($errores)):?>
                             <div class="alert alert-danger">

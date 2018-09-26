@@ -198,7 +198,9 @@
                                                     <input type="hidden" name="nombre" value="<?php echo $mostrar['nombre']?>">
                                                     <input type="hidden" name="descripcion" value="<?php echo $mostrar['descripcion']?>">
                                                     <input type="hidden" name="descripcion1" value="<?php echo $mostrar['descripcion1']?>">
-                                                     <input type="hidden" name="cantidad" value="<?php echo $mostrar['cantidad']?>">
+                                                    <input type="hidden" name="cantidad" value="<?php echo $mostrar['cantidad']?>">
+                                                    <input type="hidden" name="estado" value="<?php echo $mostrar[6]?>">
+
                                                     <input type="submit" class="btn btn-info btn-xs" value="Modificar" >
                                                     
                                                 </form>
