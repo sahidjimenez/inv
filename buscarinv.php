@@ -32,6 +32,13 @@ $idusuario = $resultado['idusuarios'];
 	$statement->execute(array(':idusuario'=>$idusuario));
 	$resultado = $statement->fetchAll();
 
+	$nombre ="celular"; 
+
+
+	$statementbus = $conexion->prepare('SELECT articulos.cantidad,ubicacion.ubicacion FROM articulos INNER JOIN ubicacion ON articulos.ubicacion_idubicacion = ubicacion.idubicacion WHERE articulos.descripcion = :nombre');
+	$statementbus->execute(array(':nombre'=>$nombre));
+	$resultadobus = $statementbus->fetchAll();
+
 		//print_r($resultado);
 		
 require'views/buscarinv.view.php';

@@ -219,12 +219,39 @@
                                                 ?>
                                             </td>
                                             <td><?php echo $mostrar['unidad']?></td>
-                                            <td><?php echo $mostrar['cantidad']?></td>
-                                            <td><?php echo $mostrar['ubicacion']?></td>
+
+                                            <?php 
+                                                try{
+                                                    $conexion = new PDO('mysql:host=localhost;dbname=inventario','root','');
+                                                }catch  (PDOException $e){
+                                                    echo "Error: ". $e->getMessage();           
+                                                }
+                                                $statementbus = $conexion->prepare('SELECT articulos.cantidad,ubicacion.ubicacion FROM articulos INNER JOIN ubicacion ON articulos.ubicacion_idubicacion = ubicacion.idubicacion WHERE articulos.descripcion = :nombre');
+                                                $statementbus->execute(array(':nombre'=>$mostrar['descripcion']));
+                                                $resultadobus = $statementbus->fetchAll();
+                                             ?>
+
+                                            <td>
+                                                <?php 
+                                                    foreach ($resultadobus as $mostrarbus) {
+                                                        echo $mostrarbus['cantidad'];
+                                                        echo '<br>';
+                                                    }
+                                                ?>
+                                            </td>
+                                            <td>
+                                                <?php 
+                                                    foreach ($resultadobus as $mostrarbus) {
+                                                        echo $mostrarbus['ubicacion'];
+                                                        echo '<br>';
+                                                    }
+                                                ?>
+                                            </td>
+
+                                            
 
                                             <td>
                                                 <form  class="form-class" method="post" action="./modificarart.php">                   
-                                                    
                                                     <input type="hidden" name="idarticulo" value="<?php echo $mostrar['idarticulos']?>">
                                                     <input type="hidden" name="nombre" value="<?php echo $mostrar['nombre']?>">
                                                     <input type="hidden" name="descripcion" value="<?php echo $mostrar['descripcion']?>">
