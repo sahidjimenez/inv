@@ -183,13 +183,16 @@
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
-                                        <th>ID articulo</th>
+                                        <!-- <th>ID articulo</th> -->
                                         <th>Descripcion</th>
-                                        <th>Marca</th>
+                                        <!-- <th>Marca</th> -->
                                         <th>Sub-ubicacion</th>
+                                        <th>Familia</th>
+                                        <th>Sub-familia</th>
+                                        <th>Ocupado</th>
+                                        <th>Unidad</th>
                                         <th>Cantidad</th>
                                         <th>Ubicacion</th>
-                                        <th>Ocupado</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
@@ -198,23 +201,27 @@
                                         foreach($resultado as $mostrar){  
                                     ?>
                                         <tr class="gradeA">
-                                            <td><?php echo $mostrar['idarticulos']?></td>
+                                            <!-- <td><?php echo $mostrar['idarticulos']?></td> -->
                                             <td><?php echo $mostrar['descripcion']?></td>
-                                            <td><?php echo $mostrar['marca']?></td>
+                                           <!--  <td><?php echo $mostrar['marca']?></td> -->
                                             <td><?php echo $mostrar['sububicacion']?></td>
-                                            <td><?php echo $mostrar['cantidad']?></td>
-                                            <td><?php echo $mostrar['ubicacion_idubicacion']?></td>
+                                            <td><?php echo $mostrar['familia']?></td>
+                                            <td><?php echo $mostrar['subfamilia']?></td>
                                             
                                             
                                             <td>
                                                 <?php 
-                                                    if ($mostrar['ocupado_idocupado']==1) {
+                                                    if ($mostrar[6]==1) {
                                                         echo "No";
                                                     }else{
                                                         echo "Si";
                                                     } 
                                                 ?>
                                             </td>
+                                            <td><?php echo $mostrar['unidad']?></td>
+                                            <td><?php echo $mostrar['cantidad']?></td>
+                                            <td><?php echo $mostrar['ubicacion']?></td>
+
                                             <td>
                                                 <form  class="form-class" method="post" action="./modificarart.php">                   
                                                     

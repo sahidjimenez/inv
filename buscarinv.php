@@ -28,7 +28,7 @@ $idusuario = $resultado['idusuarios'];
 		echo "Error: ". $e->getMessage();			
 	}
 
-	$statement = $conexion->prepare('SELECT	* FROM articulos WHERE usuarios_idusuarios =:idusuario');
+	$statement = $conexion->prepare('SELECT articulos.idarticulos, articulos.descripcion, articulos.marca, articulos.sububicacion, familia.familia, subfamilia.subfamilia, unidad.unidad, articulos.cantidad, ubicacion.ubicacion, articulos.usuarios_idusuarios FROM articulos INNER JOIN ubicacion ON ubicacion.idubicacion = articulos.ubicacion_idubicacion INNER JOIN familia ON articulos.familia_idfamilia = familia.idfamilia INNER JOIN subfamilia ON articulos.subfamilia_idsubfamilia = subfamilia.idsubfamilia INNER JOIN unidad ON articulos.unidad_idunidad = unidad.idunidad WHERE articulos.usuarios_idusuarios = :idusuario');
 	$statement->execute(array(':idusuario'=>$idusuario));
 	$resultado = $statement->fetchAll();
 
