@@ -88,6 +88,40 @@
                             <a href="inicio.php"><i class="fa fa-dashboard fa-fw"></i>Pagina de inicio</a>
                         </li>
                         <li>
+                            <a href="#"><i class="fa fa-list-alt fa-fw"></i>Agregar<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="./agregarubicacion.php">Ubicacion</a>
+                                </li>
+                                <li>
+                                    <a href="./agregarfamilia.php">Familia</a>
+                                </li>
+                                <li>
+                                    <a href="./agregarsubfamilia.php">Sub-Familia</a>
+                                </li>
+                                <li>
+                                    <a href="./agregarunidad.php">Unidad</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-search fa-fw"></i>Buscar<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="./buscarubicacion.php">Ubicacion</a>
+                                </li>
+                                <li>
+                                    <a href="./buscarfamilia.php">Familia</a>
+                                </li>
+                                <li>
+                                    <a href="./buscarsubfamilia.php">Sub-Familia</a>
+                                </li>
+                                <li>
+                                    <a href="./buscarunidad.php">Unidad</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
                             <a href="#"><i class="fa fa-list-alt fa-fw"></i>Articulos<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>

@@ -44,7 +44,13 @@ if ($_SERVER['REQUEST_METHOD'] =='POST' ) {
 			':pass'=> $password
 			));
 			header('Location: inicio.php');
+			$_SESSION['usuario'] = $usuario;
+
+	}else{
+
+		$errores .='<li>Datos Incorrectos </li>';
 	}
+
 		
 	
 }

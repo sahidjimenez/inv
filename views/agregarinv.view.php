@@ -81,10 +81,43 @@
                                     </button>
                                 </span>
                             </div>
-                            <!-- /input-group -->
                         </li>
                         <li>
                             <a href="inicio.php"><i class="fa fa-dashboard fa-fw"></i>Pagina de inicio</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-list-alt fa-fw"></i>Agregar<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="./agregarubicacion.php">Ubicacion</a>
+                                </li>
+                                <li>
+                                    <a href="./agregarfamilia.php">Familia</a>
+                                </li>
+                                <li>
+                                    <a href="./agregarsubfamilia.php">Sub-Familia</a>
+                                </li>
+                                <li>
+                                    <a href="./agregarunidad.php">Unidad</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-search fa-fw"></i>Buscar<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="./buscarubicacion.php">Ubicacion</a>
+                                </li>
+                                <li>
+                                    <a href="./buscarfamilia.php">Familia</a>
+                                </li>
+                                <li>
+                                    <a href="./buscarsubfamilia.php">Sub-Familia</a>
+                                </li>
+                                <li>
+                                    <a href="./buscarunidad.php">Unidad</a>
+                                </li>
+                            </ul>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-list-alt fa-fw"></i>Articulos<span class="fa arrow"></span></a>
@@ -140,12 +173,12 @@
                             <div class="col-lg-12">
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="Nombre" name="nombre" type="nombre" autofocus>
+                                        <input class="form-control" placeholder="Descripcion" name="descripcion" autofocus>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="Descripcion" name="descripcion" type="descripcion" autofocus>
+                                        <input class="form-control" placeholder="Marca" name="marca"  autofocus>
                                     </div>
                                 </div>
                             </div>
@@ -154,12 +187,18 @@
                             <div class="col-lg-12">                 
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="Descripcion 2" name="descripcion2" type="descripcion2" autofocus>
+                                        <input class="form-control" placeholder="Ubicacion" name="ubicacion"  list="listaubicacion" autofocus>
+                                        <datalist id=listaubicacion> 
+                                            <?php foreach ($resultado_ubicacion as $mostrar_ubicacion){ ?> 
+                                                <option><?php echo $mostrar_ubicacion['ubicacion'] ?></option>
+                                            <?php } ?>
+                                        </datalist>
+                                        
                                     </div>
                                 </div>
-                                <div class="col-lg-3">
+                                <div class="col-lg-4">
                                     <div class="form-group">
-                                        <input type="number" min="0" class="form-control" placeholder="cantidad" name="cantidad"  type="cantidad" autofocus>
+                                        <input  class="form-control" placeholder="Sub-ubicación" name="sububicacion"  autofocus>
                                     </div>
                                 </div>
                             </div>   
@@ -168,11 +207,42 @@
                             <div class="col-lg-12">              
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <select  class="form-control"  name="estado" id="select">
-                                            <option value="1">Nuevo</option>
-                                            <option value="2">Seminuevo</option>
-                                            <option value="3">Viejo</option>
-                                        </select>
+                                        <input class="form-control" placeholder="Familia" name="familia"  list="listafamilia" autofocus>
+                                        <datalist id=listafamilia> 
+                                            <?php foreach ($resultado_familia as $mostrar_familia){ ?> 
+                                                <option><?php echo $mostrar_familia['familia'] ?></option>
+                                            <?php } ?>
+                                        </datalist>
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="Sub-Familia" name="subfamilia"  list="listasubfamilia" autofocus>
+                                        <datalist id=listasubfamilia> 
+                                            <?php foreach ($resultado_subfamilia as $mostrar_subfamilia){ ?> 
+                                                <option><?php echo $mostrar_subfamilia['subfamilia'] ?></option>
+                                            <?php } ?>
+                                        </datalist>
+                                    </div>
+                                </div>
+                            </div>   
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12"> 
+                                <div class="col-lg-2">
+                                    <div class="form-group">
+                                        <input type="number" min="0" class="form-control" placeholder="cantidad" name="cantidad"   autofocus>
+                                    </div>
+                                </div>                
+                                <div class="col-lg-3">
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="Unidad" name="unidad"  list="listaunidad" autofocus>
+                                        <datalist id=listaunidad> 
+                                            <?php foreach ($resultado_unidad as $mostrar_unidad){ ?> 
+                                                <option><?php echo $mostrar_unidad['unidad'] ?></option>
+                                            <?php } ?>
+                                        </datalist>
                                     </div>
                                 </div>
                             </div>   

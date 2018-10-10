@@ -89,6 +89,40 @@
                             <a href="inicio.php"><i class="fa fa-dashboard fa-fw"></i>Pagina de inicio</a>
                         </li>
                         <li>
+                            <a href="#"><i class="fa fa-list-alt fa-fw"></i>Agregar<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="./agregarubicacion.php">Ubicacion</a>
+                                </li>
+                                <li>
+                                    <a href="./agregarfamilia.php">Familia</a>
+                                </li>
+                                <li>
+                                    <a href="./agregarsubfamilia.php">Sub-Familia</a>
+                                </li>
+                                <li>
+                                    <a href="./agregarunidad.php">Unidad</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-search fa-fw"></i>Buscar<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="./buscarubicacion.php">Ubicacion</a>
+                                </li>
+                                <li>
+                                    <a href="./buscarfamilia.php">Familia</a>
+                                </li>
+                                <li>
+                                    <a href="./buscarsubfamilia.php">Sub-Familia</a>
+                                </li>
+                                <li>
+                                    <a href="./buscarunidad.php">Unidad</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
                             <a href="#"><i class="fa fa-list-alt fa-fw"></i>Articulos<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
@@ -142,7 +176,7 @@
                             <div class="col-lg-12">
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="persona" name="persona" type="persona" list="listapersonas" autofocus>
+                                        <input class="form-control" placeholder="persona" name="persona"  list="listapersonas" autofocus>
                                         <datalist id=listapersonas> 
                                             <?php foreach ($resultado_personas as $mostrar_personas){ ?> 
                                                 <option><?php echo $mostrar_personas['nombre'] ?></option>
@@ -152,7 +186,7 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="Articulo" name="articulo" type="articulo" list="listaarticulos" autofocus>
+                                        <input class="form-control" placeholder="Articulo" name="articulo"  list="listaarticulos" autofocus>
                                         <datalist id=listaarticulos> 
                                             <?php foreach ($resultado_articulos as $mostrar_articulos){ ?> 
                                                 <option><?php echo $mostrar_articulos['nombre'] ?></option>

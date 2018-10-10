@@ -30,7 +30,6 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-
 </head>
 <body>
 
@@ -56,7 +55,7 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
-                    <ul class="dropdown-menu ">
+                    <ul class="dropdown-menu">
                         <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
                         </li>
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
@@ -65,7 +64,6 @@
                         <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
-                    <!-- /.dropdown-user -->
                 </li>
                 <!-- /.dropdown -->
             </ul>
@@ -164,7 +162,7 @@
             
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Prestar articulo</h1>
+                        <h1 class="page-header">Agregar Sub-Familia</h1>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -176,43 +174,20 @@
                             <div class="col-lg-12">
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="Persona" name="persona" type="persona" list="listapersonas" autofocus>
-                                        <datalist id=listapersonas> 
-                                            <?php foreach ($resultado_personas as $mostrar_personas){ ?> 
-                                                <option><?php echo $mostrar_personas['nombre'] ?></option>
-                                            <?php } ?>
-                                        </datalist>
+                                        <input class="form-control" placeholder="Nombre" name="nombre" type="nombre" autofocus>
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <input class="form-control" placeholder="Articulo" name="articulo" type="articulo" list="listaarticulos" autofocus>
-                                        <datalist id=listaarticulos> 
-                                            <?php foreach ($resultado_articulos as $mostrar_articulos){ ?> 
-                                                <option><?php echo $mostrar_articulos['nombre'] ?></option>
-                                            <?php } ?>
-                                        </datalist>
-                                    </div>
-                                </div>
+
+ 
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-lg-12">                 
-                                <div class="col-lg-2">
-                                    <div class="form-group">
-                                        <input type="number" min="0" class="form-control" placeholder="Cantidad" name="cantidad"  type="cantidad" autofocus>
-
-                                        
-                                    </div>
-                                </div>
-                            </div>   
-                        </div>
-                        
+                 
+ 
                          <div class="row">
                             <div class="col-lg-12">
                                 <div class="col-lg-2">
                                     <div class="form-group">
-                                        <a class="btn btn-lg btn-success btn-block" onclick="login.submit();">Modificar</a>
+                                        <a class="btn btn-lg btn-success btn-block" onclick="login.submit();">Agregar</a>
                                     </div>
                                 </div>
                             </div>   

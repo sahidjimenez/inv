@@ -9,13 +9,19 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Inventario DISAMAR</title>
+    <title>Buscar inventario</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="./vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
     <link href="./vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- DataTables CSS -->
+    <link href="./vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="./vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="./dist/css/sb-admin-2.css" rel="stylesheet">
@@ -30,12 +36,13 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-
 </head>
+
 <body>
 
     <div id="wrapper">
 
+        
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
@@ -65,7 +72,6 @@
                         <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
-                    <!-- /.dropdown-user -->
                 </li>
                 <!-- /.dropdown -->
             </ul>
@@ -159,87 +165,59 @@
             <!-- /.navbar-static-side -->
         </nav>
 
-        <!-- Page Content -->
+
         <div id="page-wrapper">
-            
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">Prestar articulo</h1>
-                    </div>
-                    <!-- /.col-lg-12 -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Buscar Unidad</h1>
                 </div>
-                <!-- /.row -->
-            <div class="panel panel-default">
-                <div class="panel panel-body">
-                    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?> " method="POST" clase="" name="login">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <input class="form-control" placeholder="Persona" name="persona" type="persona" list="listapersonas" autofocus>
-                                        <datalist id=listapersonas> 
-                                            <?php foreach ($resultado_personas as $mostrar_personas){ ?> 
-                                                <option><?php echo $mostrar_personas['nombre'] ?></option>
-                                            <?php } ?>
-                                        </datalist>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <input class="form-control" placeholder="Articulo" name="articulo" type="articulo" list="listaarticulos" autofocus>
-                                        <datalist id=listaarticulos> 
-                                            <?php foreach ($resultado_articulos as $mostrar_articulos){ ?> 
-                                                <option><?php echo $mostrar_articulos['nombre'] ?></option>
-                                            <?php } ?>
-                                        </datalist>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">                 
-                                <div class="col-lg-2">
-                                    <div class="form-group">
-                                        <input type="number" min="0" class="form-control" placeholder="Cantidad" name="cantidad"  type="cantidad" autofocus>
-
-                                        
-                                    </div>
-                                </div>
-                            </div>   
-                        </div>
-                        
-                         <div class="row">
-                            <div class="col-lg-12">
-                                <div class="col-lg-2">
-                                    <div class="form-group">
-                                        <a class="btn btn-lg btn-success btn-block" onclick="login.submit();">Modificar</a>
-                                    </div>
-                                </div>
-                            </div>   
-                        </div>  
-                    </form>
-                </div>
-
-                <div class="panel panel-footer">
-                    <?php if(!empty($errores)):?>
-                        <div class="alert alert-danger">
-                            <ul>
-                                <?php echo $errores;?>
-                            </ul>
-                         </div>
-                     <?php endif; ?>
-                    <?php if(!empty($agregado)):?>
-                        <div class="alert alert-success">
-                            <ul>
-                                <?php echo $agregado;?>
-                            </ul>
-                         </div>
-                     <?php endif; ?>
-                </div>
-            
-                
+                <!-- /.col-lg-12 -->
             </div>
-            <!-- /.container-fluid -->
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                <thead>
+                                    <tr>
+                                        <th>ID articulo</th>
+                                        <th>Nombre</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                        foreach($resultado as $mostrar){  
+                                    ?>
+                                        <tr class="gradeA">
+                                            <td><?php echo $mostrar[0]?></td>
+                                            <td><?php echo $mostrar[1]?></td>
+                                            <td>
+                                                <form  class="form-class" method="POST" action="./eliunidad.php">
+                                                                                                      
+                                                    <input type="hidden" name="eliminar" value="<?php echo $mostrar[0]?>">
+                                                    <input type="submit" class="btn btn-danger btn-xs" value="Eliminar" >
+                                                    
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    <?php
+                                        }
+                                    ?>
+                                </tbody>
+
+                            </table>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
         </div>
         <!-- /#page-wrapper -->
 
@@ -255,8 +233,22 @@
     <!-- Metis Menu Plugin JavaScript -->
     <script src="./vendor/metisMenu/metisMenu.min.js"></script>
 
+    <!-- DataTables JavaScript -->
+    <script src="./vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="./vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+    <script src="./vendor/datatables-responsive/dataTables.responsive.js"></script>
+
     <!-- Custom Theme JavaScript -->
     <script src="./dist/js/sb-admin-2.js"></script>
+
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <script>
+    $(document).ready(function() {
+        $('#dataTables-example').DataTable({
+            responsive: true
+        });
+    });
+    </script>
 
 </body>
 
