@@ -184,11 +184,11 @@
                                 <thead>
                                     <tr>
                                         <th>ID articulo</th>
-                                        <th>Nombre</th>
                                         <th>Descripcion</th>
-                                        <th>Descripcion 2</th>
+                                        <th>Marca</th>
+                                        <th>Sub-ubicacion</th>
                                         <th>Cantidad</th>
-                                        <th>Estado</th>
+                                        <th>Ubicacion</th>
                                         <th>Ocupado</th>
                                         <th>Acciones</th>
                                     </tr>
@@ -199,23 +199,13 @@
                                     ?>
                                         <tr class="gradeA">
                                             <td><?php echo $mostrar['idarticulos']?></td>
-                                            <td><?php echo $mostrar['nombre']?></td>
                                             <td><?php echo $mostrar['descripcion']?></td>
-                                            <td><?php echo $mostrar['descripcion1']?></td>
+                                            <td><?php echo $mostrar['marca']?></td>
+                                            <td><?php echo $mostrar['sububicacion']?></td>
                                             <td><?php echo $mostrar['cantidad']?></td>
-                                            <td>
-                                                <?php 
-                                                    if ($mostrar['estado_idestado']==1) {
-                                                        echo "Nuevo";
-                                                    }
-                                                    if ($mostrar['estado_idestado']==2) {
-                                                        echo "Seminuevo";
-                                                    }
-                                                    if ($mostrar['estado_idestado']==3) {
-                                                        echo "Viejo";
-                                                    }
-                                                ?> 
-                                            </td>
+                                            <td><?php echo $mostrar['ubicacion_idubicacion']?></td>
+                                            
+                                            
                                             <td>
                                                 <?php 
                                                     if ($mostrar['ocupado_idocupado']==1) {
