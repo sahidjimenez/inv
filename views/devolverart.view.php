@@ -102,6 +102,9 @@
                                 <li>
                                     <a href="./agregarunidad.php">Unidad</a>
                                 </li>
+                                <li>
+                                    <a href="./agregarper.php">Agregar persona</a>
+                                </li>
                             </ul>
                         </li>
                         <li>
@@ -119,6 +122,10 @@
                                 <li>
                                     <a href="./buscarunidad.php">Unidad</a>
                                 </li>
+                                
+                                <li>
+                                    <a href="./buscarper.php">Buscar persona</a>
+                                </li>
                             </ul>
                         </li>
                         <li>
@@ -134,23 +141,17 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-user fa-fw"></i>Personal<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-user fa-fw"></i>Movimientos<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="./agregarper.php">Agregar persona</a>
+                                    <a href="./prestarart.php"><i class="fa  fa-arrow-right fa-fw"></i>salida articulo</a>
                                 </li>
                                 <li>
-                                    <a href="./buscarper.php">Buscar persona</a>
+                                    <a href="./devolverart.php"><i class="fa  fa-arrow-left fa-fw"></i>Entrada articulo</a>
                                 </li>
                             </ul>
-                            <!-- /.nav-second-level -->
                         </li>
-                        <li>
-                            <a href="./prestarart.php"><i class="fa  fa-arrow-right fa-fw"></i>Prestar articulo</a>
-                        </li>
-                        <li>
-                            <a href="./devolverart.php"><i class="fa  fa-arrow-left fa-fw"></i>Devolver articulo</a>
-                        </li>
+                        
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

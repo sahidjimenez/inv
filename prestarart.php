@@ -8,8 +8,6 @@ if (isset($_SESSION['usuario'])) {
 	header('Location: inicio.php');
 }
 
-
-
 $errores='';
 $usuario=$_SESSION['usuario'];
 
@@ -23,7 +21,6 @@ $usuario=$_SESSION['usuario'];
 	$statement = $conexion->prepare('SELECT	* FROM usuarios WHERE nombre =:usuario');
 	$statement->execute(array(':usuario'=>$usuario));
 	$resultado = $statement->fetch();
-
 	$idusuario = $resultado['idusuarios'];
 
 	try{
@@ -41,19 +38,21 @@ $usuario=$_SESSION['usuario'];
 /* -------------------------------------------------------------*/	
 
 /* Metodo para buscar en la base de datos el nombre del articulo*/
-	$statement_articulos = $conexion->prepare('
-		SELECT nombre FROM articulos WHERE usuarios_idusuarios =:idusuario'
+	$statement_articulos = $conexion->prepare('SELECT articulos.descripcion,articulos.cantidad,ubicacion.ubicacion FROM articulos INNER JOIN ubicacion ON articulos.ubicacion_idubicacion= ubicacion.idubicacion WHERE articulos.usuarios_idusuarios = :idusuario'
 	);
 	$statement_articulos->execute(array(':idusuario'=>$idusuario));
 	$resultado_articulos = $statement_articulos->fetchAll();
 /* -------------------------------------------------------------*/	
+
 
 if ($_SERVER['REQUEST_METHOD'] =='POST' ) {
 
 	$persona = filter_var(strtolower($_POST['persona']),FILTER_SANITIZE_STRING);
 	$articulo = filter_var(strtolower($_POST['articulo']),FILTER_SANITIZE_STRING);
 	$cantidad = filter_var(strtolower($_POST['cantidad']),FILTER_SANITIZE_STRING);
-
+	$date = $_POST['date'];
+   	echo $date;
+   	
 	if (empty($persona)or empty($articulo) ) {
 			$errores .='<li> Por favor rellena todos los datos correctamente</li>';
 	}else{
@@ -75,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] =='POST' ) {
 		}	
 		
 
-		$statement_checar_articulo = $conexion->prepare('SELECT idarticulos,nombre FROM articulos WHERE nombre =:nombre LIMIT 1 ');
+		$statement_checar_articulo = $conexion->prepare('SELECT idarticulos,descripcion FROM articulos WHERE nombre =:nombre LIMIT 1 ');
 		$statement_checar_articulo->execute(array(':nombre'=>$articulo));
 		$resultado_checar_articulo = $statement_checar_articulo->fetch();
 
@@ -104,7 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] =='POST' ) {
 		if ($errores =="") {
 
 			$statement = $conexion->prepare('INSERT INTO prestamo 
-				(idprestamo,cantidad,articulos_idarticulos	,personas_idpersonas)
+				(idprestamo,cantidad,articulos_idarticulos,personas_idpersonas)
 				VALUES
 				(NULL,:cantidad,:idarticulo,:idpersona)');
 			$statement->execute(array(

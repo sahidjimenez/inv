@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] =='POST' ) {
 	$descripcion = filter_var(strtolower($_POST['descripcion']),FILTER_SANITIZE_STRING);
 	$marca = filter_var(strtolower($_POST['marca']),FILTER_SANITIZE_STRING);
 	$cantidad = filter_var(strtolower($_POST['cantidad']),FILTER_SANITIZE_STRING);
-	$sububicacion = filter_var(strtolower($_POST['sububicacion']),FILTER_SANITIZE_STRING);
+	$sububicacion = $_POST['sububicacion'];
 	$unidad = filter_var(strtolower($_POST['unidad']),FILTER_SANITIZE_STRING);
 	$ubicacion= filter_var(strtolower($_POST['ubicacion']),FILTER_SANITIZE_STRING);
 	$familia= filter_var(strtolower($_POST['familia']),FILTER_SANITIZE_STRING);
