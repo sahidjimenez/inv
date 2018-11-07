@@ -1,7 +1,4 @@
 <?php session_start();
-
-
-
 if (isset($_SESSION['usuario'])) {
 	
 }else{
@@ -23,11 +20,6 @@ $usuario=$_SESSION['usuario'];
 	$resultado = $statement->fetch();
 	$idusuario = $resultado['idusuarios'];
 
-	try{
-		$conexion = new PDO('mysql:host=localhost;dbname=inventario','root','');
-	}catch(PDOException $e){
-		echo "Error".$e->getMessage();
-	}
 
 /* Metodo para buscar en la base de datos el nombre del personal*/
 	$statement_personas = $conexion->prepare('
@@ -35,10 +27,17 @@ $usuario=$_SESSION['usuario'];
 	);
 	$statement_personas->execute(array(':idusuario'=>$idusuario));
 	$resultado_personas = $statement_personas->fetchAll();
+/* -------------------------------------------------------------*/
+/* Metodo para buscar en la base de datos las nuevas ubicaciones*/
+	$statement_ubicacion = $conexion->prepare('
+		SELECT ubicacion FROM ubicacion WHERE usuarios_idusuarios =:idusuario'
+	);
+	$statement_ubicacion->execute(array(':idusuario'=>$idusuario));
+	$resultado_ubicacion = $statement_ubicacion->fetchAll();
 /* -------------------------------------------------------------*/	
 
 /* Metodo para buscar en la base de datos el nombre del articulo*/
-	$statement_articulos = $conexion->prepare('SELECT articulos.descripcion,articulos.cantidad,ubicacion.ubicacion FROM articulos INNER JOIN ubicacion ON articulos.ubicacion_idubicacion= ubicacion.idubicacion WHERE articulos.usuarios_idusuarios = :idusuario'
+	$statement_articulos = $conexion->prepare('SELECT DISTINCT descripcion FROM articulos WHERE usuarios_idusuarios = :idusuario'
 	);
 	$statement_articulos->execute(array(':idusuario'=>$idusuario));
 	$resultado_articulos = $statement_articulos->fetchAll();
@@ -47,13 +46,13 @@ $usuario=$_SESSION['usuario'];
 
 if ($_SERVER['REQUEST_METHOD'] =='POST' ) {
 
-	$persona = filter_var(strtolower($_POST['persona']),FILTER_SANITIZE_STRING);
+	
 	$articulo = filter_var(strtolower($_POST['articulo']),FILTER_SANITIZE_STRING);
-	$cantidad = filter_var(strtolower($_POST['cantidad']),FILTER_SANITIZE_STRING);
-	$date = $_POST['date'];
-   	echo $date;
+	$ubicacionMostrar="";
+	
+	
    	
-	if (empty($persona)or empty($articulo) ) {
+	if (empty($articulo) ) {
 			$errores .='<li> Por favor rellena todos los datos correctamente</li>';
 	}else{
 
@@ -62,19 +61,9 @@ if ($_SERVER['REQUEST_METHOD'] =='POST' ) {
 		}catch  (PDOException $e){
 			echo "Error: ". $e->getMessage();			
 		}
+			
 
-		$statement_checar_persona = $conexion->prepare('SELECT idpersonas,nombre FROM personas WHERE nombre =:nombre LIMIT 1 ');
-		$statement_checar_persona ->execute(array(':nombre'=>$persona));
-		$resultado_checar_persona = $statement_checar_persona->fetch();
-
-		$idpersona=$resultado_checar_persona['idpersonas'];
-
-		if ($resultado_checar_persona != true) {
-			$errores.='El personal no existe';
-		}	
-		
-
-		$statement_checar_articulo = $conexion->prepare('SELECT idarticulos,descripcion FROM articulos WHERE nombre =:nombre LIMIT 1 ');
+		$statement_checar_articulo = $conexion->prepare('SELECT idarticulos,descripcion FROM articulos WHERE descripcion =:nombre LIMIT 1 ');
 		$statement_checar_articulo->execute(array(':nombre'=>$articulo));
 		$resultado_checar_articulo = $statement_checar_articulo->fetch();
 
@@ -84,43 +73,73 @@ if ($_SERVER['REQUEST_METHOD'] =='POST' ) {
 			$errores.='El articulo no existe';
 		}
 				
-		$statement_checar_cantidad = $conexion->prepare('SELECT cantidad FROM articulos WHERE nombre =:nombre LIMIT 1 ');
-		$statement_checar_cantidad->execute(array(':nombre'=>$articulo));
-		$resultado_checar_cantidad = $statement_checar_cantidad->fetch();
-
-		$cantidad_vieja=$resultado_checar_cantidad['cantidad'];
-
-		$cantidad_nueva=$cantidad_vieja-$cantidad;
-		$ocupado=2;
-
-
-		if ($cantidad >= 1 && $cantidad <= $resultado_checar_cantidad['cantidad']) {
-
-		}else{
-			$errores.='valor invalido';
-		}
+		
 
 		if ($errores =="") {
 
-			$statement = $conexion->prepare('INSERT INTO prestamo 
-				(idprestamo,cantidad,articulos_idarticulos,personas_idpersonas)
-				VALUES
-				(NULL,:cantidad,:idarticulo,:idpersona)');
-			$statement->execute(array(
-				':cantidad'=>$cantidad,
-				':idarticulo'=>$idarticulo,
-				':idpersona'=>$idpersona
-			));
-			$resultado_ = $statement->fetch();
+			
+			$statement = $conexion->prepare('SELECT descripcion FROM articulos WHERE descripcion = :articulo');
+			$statement ->execute(array(':articulo'=>$articulo));
+			$resultado = $statement->fetchAll();
 
-			$statement = $conexion->prepare('UPDATE articulos SET cantidad=:cantidad, ocupado_idocupado=:ocupado WHERE idarticulos= :idarticulo');
-			$statement->execute(array(
-				':cantidad'=>$cantidad_nueva,
-				':ocupado'=>$ocupado,
-				':idarticulo'=>$idarticulo
-			));
-			$resultado = $statement->fetch();
-			header('Location: prestarart.php');
+			/*
+			echo "<pre>";
+			print_r($resultado);
+			echo "</pre>";
+
+			
+			foreach ($resultado as $valor) {
+				echo $valor['descripcion'];
+			}
+			*/
+			$contar = count($resultado);
+			//echo $contar;
+			
+			if ($contar <= 1) {
+				$valoresMostrar="si se crea";
+				//echo "el array tiene un solo valor ";
+
+				$statement = $conexion->prepare('SELECT articulos.idarticulos,articulos.descripcion,articulos.cantidad,ubicacion.ubicacion,ocupado.ocupado FROM articulos INNER JOIN ubicacion ON articulos.ubicacion_idubicacion = ubicacion.idubicacion INNER JOIN ocupado ON articulos.ocupado_idocupado=ocupado.idocupado WHERE articulos.descripcion = :articulo');
+				$statement ->execute(array(':articulo'=>$articulo));
+				$resultado = $statement->fetch();
+				print_r($resultado);
+
+				$ubicacionMostrar=$resultado[3];
+				$cantidadMostrar=$resultado[2];
+				$descripcionMostrar=$resultado[1];
+				
+				if ($resultado[4]=="no") {
+					$ocupadoMostrar = "No esta fuera de bodega";
+				}else{
+					$ocupadoMostrar= "Esta fuera de bodega";
+				}
+
+
+
+			}else{
+				$valoresMostrar="si se crea"; 
+				$statement = $conexion->prepare('SELECT articulos.idarticulos,articulos.descripcion,articulos.cantidad,ubicacion.ubicacion,ocupado.ocupado FROM articulos INNER JOIN ubicacion ON articulos.ubicacion_idubicacion = ubicacion.idubicacion INNER JOIN ocupado ON articulos.ocupado_idocupado=ocupado.idocupado WHERE articulos.descripcion = :articulo');
+				$statement ->execute(array(':articulo'=>$articulo));
+				$resultados = $statement->fetchAll();
+				$contarResultados = count($resultados)-1;
+				//echo "contar resultados ".$contarResultados;
+
+
+				$descripcionMostrar=$resultados[0][1];
+
+
+				foreach ($resultados as $resultado) {
+					echo '<pre>';
+					print_r($resultado);
+					echo '</pre>';
+				}
+
+				for ($i=0; $i <=$contarResultados ; $i++) { 
+					echo $holi=$resultados[$i][3]."<br> ";
+				$ubicacionMostrar.=$holi;
+				}
+
+			}			
 		}
 	}
 }

@@ -46,6 +46,12 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">Prestar articulo</h1>
+
+                        <?php if(!empty($descripcionMostrar)):?>
+                            <h1 class="text-center">
+                                <?php echo $descripcionMostrar;?>
+                            </h1>                      
+                        <?php endif; ?>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -53,6 +59,7 @@
             <div class="panel panel-default">
                 <div class="panel panel-body">
                     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?> " method="POST" clase="" name="login">
+<!------------------------------------      DIVISION DE FILA 1  ------------------------------------->
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="col-lg-4">
@@ -64,57 +71,174 @@
                                             <?php } ?>
                                         </datalist>
                                     </div>
-                                    
-                                    <p>
-                                        
-                                    </p>
                                 </div>
-
+                    </form>
                                 <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <input class="form-control" placeholder="persona" name="persona"  list="listapersonas" autofocus>
-                                        <datalist id=listapersonas> 
-                                            <?php foreach ($resultado_personas as $mostrar_personas){ ?> 
-                                                <option><?php echo $mostrar_personas['nombre'] ?></option>
-                                            <?php } ?>
-                                        </datalist>
+                                    <div class="form-group text-center">
+                                        <label>Mover</label>
+                                    </div>
+                                </div>
+                            
+                                <div class="col-lg-4">
+                                    <div class="form-group text-center">
+                                        <label>Actual</label>
                                     </div>
                                 </div>
                             </div>
                         </div>
+<!------------------------------------      DIVISION DE FILA 2 ------------------------------------->
                         <div class="row">
                             <div class="col-lg-12">                 
-                                <div class="col-lg-2">
+                                <div class="col-lg-4">
                                     <div class="form-group">
-                                        <input type="number" min="0" class="form-control" placeholder="Cantidad" name="cantidad"  type="cantidad" autofocus>
+                                        
+                                    </div>
+                                </div>
+                    <?php if(!empty($valoresMostrar)):?>
+                    <form method="POST" action="prueba.php">           
+                                <div class="col-lg-4">
+                                    <div class="form-group ">
+                                        <input class="form-control" type="number" name="cantidad" placeholder="Cantidad">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group text-center">
+                                        <?php if(!empty($cantidadMostrar)):?>
+                                            <ul>
+                                                <?php echo $cantidadMostrar;?>
+                                            </ul>                      
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                             </div>   
                         </div>
+
+<!------------------------------------      DIVISION DE FILA 3 ------------------------------------->
+
+                        <div class="row">
+                            <div class="col-lg-12">                 
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        
+                                    </div>
+                                </div>
+                                
+                                <div class="col-lg-4">
+                                    <div class="form-group ">
+
+                                        <input class="form-control" placeholder="Ubicacion" name="ubicacion"  list="listaubicacion" autofocus>
+                                        <datalist id=listaubicacion> 
+                                            <?php foreach ($resultado_ubicacion as $mostrar_ubicacion){ ?> 
+                                                <option><?php echo $mostrar_ubicacion['ubicacion'] ?></option>
+                                            <?php } ?>
+                                        </datalist>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group text-center">
+                                        <?php if(!empty($ubicacionMostrar)):?>
+                                            <ul>
+                                                <?php echo $ubicacionMostrar;?>
+                                        </ul>
+                                                                 
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                            </div>   
+                        </div>
+
+<!------------------------------------      DIVISION DE FILA 4 ------------------------------------->
+
                         <div class="row">
                             <div class="col-lg-12">
-                                <div class="col-lg-2">
+                                <div class="col-lg-4">
                                     <div class="form-group">
                                         
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group ">
+                                        <input class="form-control" placeholder="Personal encargado" name="persona"  list="listapersonas" autofocus>
+                                        <datalist id=listapersonas> 
+                                            <?php foreach ($resultado_personas as $mostrar_persona){ ?> 
+                                                <option><?php echo $mostrar_persona['nombre'] ?></option>
+                                            <?php } ?>
+                                        </datalist>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group text-center">
+                                        <?php if(!empty($ocupadoMostrar)):?>
+                                            <ul>
+                                                <?php echo $ocupadoMostrar;?>
+                                            </ul>                      
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                            </div>   
+                        </div>
+<!------------------------------------      DIVISION DE FILA 5 ------------------------------------->
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        
+                                        
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group ">
                                         <input type="date" name="date"><br>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group text-center">
                                         
                                     </div>
                                 </div>
                             </div>   
                         </div>
-                        
+<!------------------------------------      DIVISION DE FILA   ------------------------------------->
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group ">
+                                        <input class="btn btn-sm btn-success" type="submit"  placeholder="Personal">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    
+                                </div>
+                            </div>   
+                        </div>
+
+                    </form>
+                    <?php endif; ?>
+<!------------------------------------      DIVISION DE FILA   ------------------------------------->
+
                          <div class="row">
                             <div class="col-lg-12">
                                 <div class="col-lg-2">
                                     <div class="form-group">
-                                        <a class="btn btn-lg btn-success btn-block" onclick="login.submit();">Agregar</a>
+                                        <a class="btn btn-lg btn-success btn-block" onclick="login.submit();">Buscar</a>
                                     </div>
                                 </div>
                             </div>   
                         </div>
 
+<!------------------------------------      DIVISION DE FILA   ------------------------------------->
 
-                    </form>
+                    
                 </div>
 
                 <div class="panel panel-footer">
